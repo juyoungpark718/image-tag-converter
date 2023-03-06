@@ -3,9 +3,13 @@
   "name": "Image Tag Converter",
   "description": "This extension converts Markdown image syntax to image html tag",
   "version": "0.0.1",
+  "action": {
+    "default_popup": "./src/popup/index.html"
+  },
   "content_scripts": [
     {
-      "js": ["./scripts/main.js"],
+      "matches": ["*://*/*"],
+      "js": ["./main.js"],
       "run_at": "document_start"
     }
   ],

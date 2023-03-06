@@ -4,7 +4,7 @@
    "module": "ES2015",
    "lib": ["DOM", "DOM.Iterable","ESNext"],
    "allowJs": true,
-   "outDir": "./scripts", 
+   "outDir": "./dist", 
    "rootDir": "./src",
    "strict": true,
    "noImplicitAny": true, 
@@ -17,5 +17,6 @@
    "noUnusedParameters": true,
    "noImplicitReturns": true,
    "noFallthroughCasesInSwitch": true, 
+   "moduleResolution": "node",
   }
  }

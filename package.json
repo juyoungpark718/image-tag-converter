@@ -1,0 +1,17 @@
+{
+  "name": "image-tag-converter",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/juyoungpark718/image-tag-converter.git",
+  "author": "juyoungpark718 <juyoung7018.park@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "tsc": "tsc"
+  },
+  "devDependencies": {
+    "typescript": "^4.9.5"
+  },
+  "dependencies": {
+    "@types/chrome": "^0.0.219"
+  }
+}

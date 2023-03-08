@@ -7,7 +7,9 @@
   "author": "juyoungpark718 <juyoung7018.park@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "esbuild ./src/main.ts ./src/popup/index.ts --outdir=dist --bundle --sourcemap && rsync -r --exclude 'test' --exclude '*.ts' ./src/ ./dist/ && cp ./manifest.json ./dist",
+    "prezip": "rm -rf ./dist && esbuild ./src/main.ts ./src/popup/index.ts --outdir=dist --bundle --minify && rsync -r --exclude 'test' --exclude '*.ts' ./src/ ./dist/ && cp ./manifest.json ./dist",
+    "zip": "zip -r ./dist.zip ./dist",
+    "build:dev": "esbuild ./src/main.ts ./src/popup/index.ts --outdir=dist --bundle --sourcemap && rsync -r --exclude 'test' --exclude '*.ts' ./src/ ./dist/ && cp ./manifest.json ./dist",
     "predev": "cp ./src/index.html ./dist/index.html",
     "dev": "esbuild main=./src/main.ts --outdir=dist --bundle --sourcemap --watch --servedir=dist",
     "postdev": "rm -rf ./dist/index.html"

@@ -2,12 +2,21 @@ import * as _ from "@fxts/core";
 import { getBodyContent, getHeadContent, getTailContent } from "./helper";
 import { parseMarkdownImageLinks, throttle } from "./util";
 
+let imageHeight = 300;
+
+chrome.runtime.onMessage.addListener((msg: { height: number }) => {
+  imageHeight = msg.height || 300;
+});
+
 document.addEventListener("click", () => {
   const activeEl = document.activeElement;
-
   if (activeEl?.tagName === "TEXTAREA") {
     const textarea = activeEl as HTMLTextAreaElement;
+    console.debug("hihihi");
     textarea.addEventListener("select", onSelectHandler);
+    textarea.addEventListener("focusout", () => {
+      textarea.removeEventListener("select", onSelectHandler);
+    });
   }
 });
 
@@ -33,7 +42,7 @@ const onSelectHandler = throttle((event: Event) => {
   const endImageLinkIndex = selectedText.indexOf(endImageLink) + endImageLink.length - 1;
 
   const head = getHeadContent(value, el.selectionStart, startImageLinkIndex);
-  const body = getBodyContent(selectedText, startImageLinkIndex, endImageLinkIndex);
+  const body = getBodyContent(selectedText, startImageLinkIndex, endImageLinkIndex, imageHeight);
   const tail = getTailContent(value, el.selectionStart, el.selectionEnd, endImageLinkIndex);
 
   el.value = head + body + tail;

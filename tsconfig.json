@@ -18,5 +18,7 @@
    "noImplicitReturns": true,
    "noFallthroughCasesInSwitch": true, 
    "moduleResolution": "node",
-  }
- }
+   "esModuleInterop": true
+  },
+  "exclude": ["./jest.config.js", "./dist"]
+}

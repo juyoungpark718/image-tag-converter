@@ -12,7 +12,6 @@ document.addEventListener("click", () => {
   const activeEl = document.activeElement;
   if (activeEl?.tagName === "TEXTAREA") {
     const textarea = activeEl as HTMLTextAreaElement;
-    console.debug("hihihi");
     textarea.addEventListener("select", onSelectHandler);
     textarea.addEventListener("focusout", () => {
       textarea.removeEventListener("select", onSelectHandler);

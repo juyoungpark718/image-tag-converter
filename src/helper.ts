@@ -37,7 +37,7 @@ export const getBodyContent = (
   imageHeight: number
 ) => {
   return convertMarkdownImageLinkToImageTag(
-    selectedText.slice(startImageLinkIndex, endImageLinkIndex),
+    selectedText.slice(startImageLinkIndex, endImageLinkIndex + 1),
     imageHeight
   );
 };

@@ -1,4 +1,4 @@
-import { getHeadContent, getTailContent } from "./../main";
+import { getHeadContent, getTailContent } from "../helper";
 
 describe("getHeadContent", () => {
   it("selection 시작과 value의 시작이 같음, selection안에 유효하지 않은 마크다운 없음", () => {

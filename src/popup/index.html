@@ -5,8 +5,58 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      /* Chrome, Safari, Edge, Opera */
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      /* Firefox */
+      input[type="number"] {
+        -moz-appearance: textfield;
+      }
+
+      .container {
+        width: 240px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .input-container {
+        padding: 0 8px;
+        height: 32px;
+        font-size: 12px;
+        border-radius: 4px;
+        border: 1px solid #cfcfcf;
+      }
+
+      .send-button {
+        height: 32px;
+        border: 1px solid #cfcfcf;
+        border-radius: 4px;
+        background-color: #4f86c6;
+        color: white;
+        font-size: 14px;
+        cursor: pointer;
+      }
+    </style>
   </head>
   <body>
-    <div>hihih</div>
+    <div class="container">
+      <input
+        id="img-width"
+        class="input-container"
+        type="number"
+        value=""
+        placeholder="이미지 넓이(기본:300)"
+        max="1000"
+        min="100"
+      />
+      <button id="send-btn" class="send-button">전송</button>
+    </div>
+    <script src="./index.js"></script>
   </body>
 </html>

@@ -4,8 +4,10 @@
   "description": "This extension converts Markdown image syntax to image html tag",
   "version": "0.0.1",
   "action": {
-    "default_popup": "./src/popup/index.html"
+    "default_popup": "./popup/index.html"
   },
+  "permissions": ["scripting"],
+  "host_permissions": ["<all_urls>"],
   "content_scripts": [
     {
       "matches": ["*://*/*"],

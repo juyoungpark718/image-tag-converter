@@ -10,6 +10,7 @@ export const throttle = <T>(fn: (event: T) => void, time = 200) => {
 
     setTimeoutId = window.setTimeout(() => {
       fn(event);
+      setTimeoutId = null;
     }, time);
 
     return;

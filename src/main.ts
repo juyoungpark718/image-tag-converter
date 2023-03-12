@@ -4,9 +4,9 @@ import { parseMarkdownImageLinks, throttle } from "./util";
 
 let imageHeight = 300;
 
-// chrome.runtime.onMessage.addListener((msg: { height: number }) => {
-//   imageHeight = msg.height || 300;
-// });
+chrome.runtime.onMessage.addListener((msg: { height: number }) => {
+  imageHeight = msg.height || 300;
+});
 
 document.addEventListener("click", () => {
   const activeEl = document.activeElement;

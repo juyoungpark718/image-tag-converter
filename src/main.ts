@@ -12,10 +12,14 @@ document.addEventListener("click", () => {
   const activeEl = document.activeElement;
   if (activeEl?.tagName === "TEXTAREA") {
     const textarea = activeEl as HTMLTextAreaElement;
-    textarea.addEventListener("select", onSelectHandler);
-    textarea.addEventListener("focusout", () => {
+
+    function focusOutHandler() {
       textarea.removeEventListener("select", onSelectHandler);
-    });
+      textarea.removeEventListener("focusout", focusOutHandler);
+    }
+
+    textarea.addEventListener("select", onSelectHandler);
+    textarea.addEventListener("focusout", focusOutHandler);
   }
 });
 

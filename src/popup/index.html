@@ -42,6 +42,11 @@
         font-size: 14px;
         cursor: pointer;
       }
+
+      .checkbox-container {
+        display: flex;
+        align-items: center;
+      }
     </style>
   </head>
   <body>
@@ -51,10 +56,14 @@
         class="input-container"
         type="number"
         value=""
-        placeholder="이미지 넓이(기본:300)"
+        placeholder="이미지 너비(기본:300)"
         max="1000"
         min="100"
       />
+      <div class="checkbox-container">
+        <label>작동 여부</label>
+        <input id="converter-active" type="checkbox" checked />
+      </div>
       <button id="send-btn" class="send-button">전송</button>
     </div>
     <script src="./index.js"></script>

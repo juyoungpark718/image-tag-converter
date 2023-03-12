@@ -15,18 +15,8 @@ export const imageTagReplacer =
     return _.pipe(`${p1}.${p3}`, makeImageTag(imageHeight));
   };
 
-export const getHeadContent = (
-  value: string,
-  selectionStart: number,
-  startImageLinkIndex: number
-) => {
-  const isSelectionStartZero = 0 === selectionStart;
-
-  if (isSelectionStartZero) {
-    return value.slice(0, startImageLinkIndex);
-  }
-
-  return value.slice(0, selectionStart + startImageLinkIndex);
+export const getHeadContent = (selectedText: string, startImageLinkIndex: number) => {
+  return selectedText.slice(0, startImageLinkIndex);
 };
 
 export const getBodyContent = (
@@ -41,21 +31,6 @@ export const getBodyContent = (
   );
 };
 
-export const getTailContent = (
-  value: string,
-  selectionStart: number,
-  selectionEnd: number,
-  endImageLinkIndex: number
-) => {
-  const isSelectionStartZero = 0 === selectionStart;
-
-  if (isSelectionStartZero) {
-    return value.slice(endImageLinkIndex + 1, value.length);
-  }
-
-  if (selectionEnd === endImageLinkIndex) {
-    return value.slice(selectionEnd, value.length);
-  }
-
-  return value.slice(selectionStart + endImageLinkIndex + 1, value.length);
+export const getTailContent = (selectedText: string, endImageLinkIndex: number) => {
+  return selectedText.slice(endImageLinkIndex + 1, selectedText.length);
 };

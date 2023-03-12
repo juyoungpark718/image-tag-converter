@@ -1,20 +1,19 @@
 import * as _ from "@fxts/core";
-import { parseImageUrl, parseMarkdownImageLinks } from "./util";
 
 export const makeImageTag = (imageHeight: number) => (link: string) => {
   return `<img src="${link}" width=${imageHeight} alt="notfoundimage"/>`;
 };
 
-export const convertMarkdownImageLinkToImageTag = (text: string, imageHeight: number) => {
-  return _.pipe(
-    text,
-    parseMarkdownImageLinks,
-    _.map(parseImageUrl),
-    _.map(makeImageTag(imageHeight)),
-    _.toArray,
-    _.join("\n")
-  );
+export const replaceMarkdownImageLinks = (text: string, imageHeight: number) => {
+  const markdownImageLinkRegex = /!\[[^\]]+\]\(([^\)]+)(?:\"([^\"]+)\")?\.(png|jpe?g|gif|bmp)\)/gim;
+
+  return text.trim().replace(markdownImageLinkRegex, imageTagReplacer(imageHeight));
 };
+
+export const imageTagReplacer =
+  (imageHeight: number) => (__: string, p1: string, ___: string, p3: string, ____: string) => {
+    return _.pipe(`${p1}.${p3}`, makeImageTag(imageHeight));
+  };
 
 export const getHeadContent = (
   value: string,
@@ -36,7 +35,7 @@ export const getBodyContent = (
   endImageLinkIndex: number,
   imageHeight: number
 ) => {
-  return convertMarkdownImageLinkToImageTag(
+  return replaceMarkdownImageLinks(
     selectedText.slice(startImageLinkIndex, endImageLinkIndex + 1),
     imageHeight
   );

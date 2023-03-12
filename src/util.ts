@@ -1,4 +1,4 @@
-import * as _ from "@fxts/core";
+import { MARKDOWN_IMAGE_LINK_REGEX } from "./constant";
 
 export const throttle = <T>(fn: (event: T) => void, time = 200) => {
   let setTimeoutId: number | null = null;
@@ -18,22 +18,9 @@ export const throttle = <T>(fn: (event: T) => void, time = 200) => {
 };
 
 export const parseMarkdownImageLinks = (text: string) => {
-  const markdownImageLinkRegex =
-    /!\[[^\]]+\]\(([^ \)]+)(?: \"([^\"]+)\")?\.(png|jpe?g|gif|bmp)\)/gim;
-  const matchedMarkdownImageLinks = text.trim().match(markdownImageLinkRegex);
+  const matchedMarkdownImageLinks = text.trim().match(MARKDOWN_IMAGE_LINK_REGEX);
 
   if (!matchedMarkdownImageLinks) return [];
 
   return matchedMarkdownImageLinks;
-};
-
-export const parseImageUrl = (text: string) => {
-  const imageUrlRegex = /\(.+\.(png|jpe?g|gif|bmp)\)/gim;
-  const matchedImageUrls = text.trim().match(imageUrlRegex);
-
-  if (!matchedImageUrls) return "";
-
-  const url = _.head(matchedImageUrls);
-
-  return url?.slice(1, -1) || "";
 };

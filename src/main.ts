@@ -44,5 +44,7 @@ const onSelectHandler = throttle((event: Event) => {
   const body = getBodyContent(selectedText, startImageLinkIndex, endImageLinkIndex, imageHeight);
   const tail = getTailContent(value, el.selectionStart, el.selectionEnd, endImageLinkIndex);
 
+  document.execCommand("insertText", false, head + body + tail);
+
   el.value = head + body + tail;
 });

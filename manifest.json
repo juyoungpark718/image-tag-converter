@@ -6,7 +6,7 @@
   "action": {
     "default_popup": "./popup/index.html"
   },
-  "permissions": ["scripting", "storage"],
+  "permissions": ["storage"],
   "host_permissions": ["<all_urls>"],
   "content_scripts": [
     {
@@ -15,5 +15,7 @@
       "run_at": "document_start"
     }
   ],
-  "icons": {}
+  "icons": {
+    "128": "./assets/icon.png"
+  }
 }

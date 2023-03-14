@@ -38,6 +38,7 @@ function initEventHandler() {
 
       chrome.tabs.sendMessage(tab.id, { height: value }, () => {
         chrome.storage.sync.set({ height: value });
+        console.debug(value);
       });
     });
   });
@@ -58,6 +59,7 @@ function initEventHandler() {
 
       chrome.tabs.sendMessage(tab.id, { isActive: checked }, () => {
         chrome.storage.sync.set({ active: checked });
+        console.debug(checked);
       });
     });
   });

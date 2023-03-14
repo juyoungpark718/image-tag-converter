@@ -6,23 +6,23 @@ import { parseMarkdownImageLinks, throttle } from "./util";
 let imageHeight = 300;
 let isActive = true;
 
-// chrome.runtime.onMessage.addListener(
-//   (msg: { height: number; isActive: boolean }, __, sendResponse) => {
-//     console.debug(msg);
-//     imageHeight = msg.height ?? imageHeight;
-//     isActive = msg.isActive ?? isActive;
+chrome.runtime.onMessage.addListener(
+  (msg: { height: number; isActive: boolean }, __, sendResponse) => {
+    console.debug(msg);
+    imageHeight = msg.height ?? imageHeight;
+    isActive = msg.isActive ?? isActive;
 
-//     sendResponse("success");
-//   }
-// );
+    sendResponse("success");
+  }
+);
 
 init();
 
 async function init() {
-  // const [height, active] = await Promise.all([getHeightData(), getActiveData()]);
+  const [height, active] = await Promise.all([getHeightData(), getActiveData()]);
 
-  // imageHeight = height ?? imageHeight;
-  // isActive = active ?? isActive;
+  imageHeight = height ?? imageHeight;
+  isActive = active ?? isActive;
 
   document.addEventListener("click", () => {
     const activeEl = document.activeElement;

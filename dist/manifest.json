@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Image Tag Converter",
   "description": "This extension converts Markdown image syntax to image html tag",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "action": {
     "default_popup": "./popup/index.html"
   },

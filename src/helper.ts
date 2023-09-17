@@ -1,7 +1,7 @@
 import * as _ from "@fxts/core";
 
 export const makeImageTag = (imageHeight: number) => (link: string) => {
-  return `<img src="${link}" width=${imageHeight} alt="notfoundimage"/>`;
+  return `<img src="${link}" width=${imageHeight} alt=""/>`;
 };
 
 export const replaceMarkdownImageLinks = (text: string, imageHeight: number) => {
